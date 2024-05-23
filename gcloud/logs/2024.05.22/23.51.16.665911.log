@@ -1,12 +1,12 @@
-2024-05-17 23:23:50,322 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
-2024-05-17 23:23:50,328 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'describe']
-2024-05-17 23:23:50,329 DEBUG    root            Running [gcloud.projects.describe] with arguments: [--account: "vamsichivu.sys@gmail.com", --configuration: "default", --format: "value(name)", PROJECT_ID_OR_NUMBER: "cogent-joy-364321"]
-2024-05-17 23:23:50,339 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
-2024-05-17 23:23:50,342 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
-2024-05-17 23:23:50,464 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
-2024-05-17 23:23:50,465 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
-2024-05-17 23:23:50,517 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
-2024-05-17 23:23:50,518 DEBUG    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+2024-05-22 23:51:16,677 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
+2024-05-22 23:51:16,682 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'describe']
+2024-05-22 23:51:16,683 DEBUG    root            Running [gcloud.projects.describe] with arguments: [--account: "vamsichivu.sys@gmail.com", --configuration: "default", --format: "value(name)", PROJECT_ID_OR_NUMBER: "cogent-joy-364321"]
+2024-05-22 23:51:16,696 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2024-05-22 23:51:16,700 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2024-05-22 23:51:16,861 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
+2024-05-22 23:51:16,861 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2024-05-22 23:51:16,910 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
+2024-05-22 23:51:16,911 DEBUG    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
 Please run:
 
   $ gcloud auth login
@@ -29,7 +29,7 @@ Traceback (most recent call last):
     self._RaiseIfStop(result, state)
   File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 115, in _RaiseIfStop
     raise MaxRetrialsException('Reached', result, state)
-googlecloudsdk.core.util.retry.MaxRetrialsException: last_result=(None, (<class 'google.auth.exceptions.RefreshError'>, RefreshError('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'}), <traceback object at 0x104d08780>)), last_retrial=1, time_passed_ms=178,time_to_wait=0
+googlecloudsdk.core.util.retry.MaxRetrialsException: last_result=(None, (<class 'google.auth.exceptions.RefreshError'>, RefreshError('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'}), <traceback object at 0x107a4dcc0>)), last_retrial=1, time_passed_ms=215,time_to_wait=0
 
 During handling of the above exception, another exception occurred:
 
@@ -135,7 +135,7 @@ If you have already logged in with a different account, run:
   $ gcloud config set account ACCOUNT
 
 to select an already authenticated account to use.
-2024-05-17 23:23:50,530 ERROR    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+2024-05-22 23:51:16,923 ERROR    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
 Please run:
 
   $ gcloud auth login
