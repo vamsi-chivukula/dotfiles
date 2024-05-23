@@ -1,0 +1,149 @@
+2024-05-21 20:47:35,915 DEBUG    root            Loaded Command Group: ['gcloud', 'projects']
+2024-05-21 20:47:35,921 DEBUG    root            Loaded Command Group: ['gcloud', 'projects', 'describe']
+2024-05-21 20:47:35,921 DEBUG    root            Running [gcloud.projects.describe] with arguments: [--account: "vamsichivu.sys@gmail.com", --configuration: "default", --format: "value(name)", PROJECT_ID_OR_NUMBER: "cogent-joy-364321"]
+2024-05-21 20:47:35,969 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2024-05-21 20:47:35,973 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2024-05-21 20:47:36,127 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
+2024-05-21 20:47:36,128 DEBUG    google.auth.transport.requests Making request: POST https://oauth2.googleapis.com/token
+2024-05-21 20:47:36,176 DEBUG    urllib3.connectionpool https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 400 None
+2024-05-21 20:47:36,177 DEBUG    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 307, in DecoratedFunction
+    return retryer.RetryOnException(f, args=args, kwargs=kwargs,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 197, in RetryOnException
+    result, exc_info = self.RetryOnResult(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 256, in RetryOnResult
+    self._RaiseIfStop(result, state)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 115, in _RaiseIfStop
+    raise MaxRetrialsException('Reached', result, state)
+googlecloudsdk.core.util.retry.MaxRetrialsException: last_result=(None, (<class 'google.auth.exceptions.RefreshError'>, RefreshError('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'}), <traceback object at 0x10756c540>)), last_retrial=1, time_passed_ms=208,time_to_wait=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1067, in HandleGoogleAuthCredentialsRefreshError
+    yield
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1189, in _RefreshGoogleAuth
+    credentials.refresh(request_client)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/creds.py", line 943, in _WrappedRefresh
+    orig_refresh(request)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/google_auth_credentials.py", line 103, in refresh
+    return self._Refresh(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/google_auth_credentials.py", line 174, in _Refresh
+    access_token, refresh_token, expiry, grant_response = _RefreshGrant(
+                                                          ^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/google_auth_credentials.py", line 269, in _RefreshGrant
+    response_data = _TokenEndpointRequestWithRetry(request, token_uri, body)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 312, in DecoratedFunction
+    exceptions.reraise(to_reraise[1], tb=to_reraise[2])
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/exceptions.py", line 149, in reraise
+    six.reraise(type(exc_value), exc_value, tb)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/third_party/six/__init__.py", line 719, in reraise
+    raise value
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/util/retry.py", line 182, in TryFunc
+    return func(*args, **kwargs), None
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/google_auth_credentials.py", line 330, in _TokenEndpointRequestWithRetry
+    _HandleErrorResponse(response_body)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/google_auth_credentials.py", line 359, in _HandleErrorResponse
+    google_auth_client._handle_error_response(error_data, False)  # pylint: disable=protected-access
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/third_party/google/oauth2/_client.py", line 72, in _handle_error_response
+    raise exceptions.RefreshError(
+google.auth.exceptions.RefreshError: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/calliope/cli.py", line 998, in Execute
+    resources = calliope_command.Run(cli=self, args=args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/calliope/backend.py", line 815, in Run
+    resources = command_instance.Run(args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/surface/projects/describe.py", line 51, in Run
+    return projects_api.Get(project_ref)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/api_lib/cloudresourcemanager/projects_api.py", line 124, in Get
+    client = projects_util.GetClient(api_version)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/api_lib/cloudresourcemanager/projects_util.py", line 56, in GetClient
+    return apis.GetClientInstance(_API_NAME, version)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/api_lib/util/apis.py", line 282, in GetClientInstance
+    return apis_internal._GetClientInstance(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/api_lib/util/apis_internal.py", line 169, in _GetClientInstance
+    http_client = transports.GetApitoolsTransport(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/transports.py", line 80, in GetApitoolsTransport
+    session = requests.GetSession(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/requests.py", line 82, in GetSession
+    session = request_wrapper.WrapQuota(session, enable_resource_quota,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/requests.py", line 127, in WrapQuota
+    quota_project = self.QuotaProject(enable_resource_quota,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/transport.py", line 54, in QuotaProject
+    creds = store.LoadIfEnabled(allow_account_impersonation, use_google_auth)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 636, in LoadIfEnabled
+    return Load(
+           ^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 746, in Load
+    cred = _Load(
+           ^^^^^^
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 958, in _Load
+    RefreshIfAlmostExpire(cred)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1302, in RefreshIfAlmostExpire
+    RefreshIfExpireWithinWindow(credentials, window=_CREDENTIALS_EXPIRY_WINDOW)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1298, in RefreshIfExpireWithinWindow
+    Refresh(credentials)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 998, in Refresh
+    _RefreshGoogleAuth(credentials, is_impersonated_credential,
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1157, in _RefreshGoogleAuth
+    with HandleGoogleAuthCredentialsRefreshError():
+  File "/opt/homebrew/Cellar/python@3.12/3.12.3/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/opt/homebrew/Caskroom/google-cloud-sdk/476.0.0/google-cloud-sdk/lib/googlecloudsdk/core/credentials/store.py", line 1076, in HandleGoogleAuthCredentialsRefreshError
+    raise creds_exceptions.TokenRefreshError(six.text_type(e), for_adc=for_adc)
+googlecloudsdk.core.credentials.exceptions.TokenRefreshError: There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.
+2024-05-21 20:47:36,190 ERROR    root            (gcloud.projects.describe) There was a problem refreshing your current auth tokens: ('invalid_grant: Bad Request', {'error': 'invalid_grant', 'error_description': 'Bad Request'})
+Please run:
+
+  $ gcloud auth login
+
+to obtain new credentials.
+
+If you have already logged in with a different account, run:
+
+  $ gcloud config set account ACCOUNT
+
+to select an already authenticated account to use.

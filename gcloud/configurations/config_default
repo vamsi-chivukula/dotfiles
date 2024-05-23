@@ -1,0 +1,8 @@
+[core]
+account = vamsichivu.sys@gmail.com
+project = cogent-joy-364321
+
+[compute]
+region = us-east1
+zone = us-east1-b
+
